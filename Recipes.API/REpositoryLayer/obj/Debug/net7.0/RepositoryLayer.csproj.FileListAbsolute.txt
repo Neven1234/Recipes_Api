@@ -1,0 +1,17 @@
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\bin\Debug\net7.0\RepositoryLayer.deps.json
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\bin\Debug\net7.0\RepositoryLayer.runtimeconfig.json
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\bin\Debug\net7.0\RepositoryLayer.dll
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\bin\Debug\net7.0\RepositoryLayer.pdb
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\bin\Debug\net7.0\DomainLayer.dll
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\bin\Debug\net7.0\DomainLayer.pdb
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\RepositoryLayer.csproj.AssemblyReference.cache
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\RepositoryLayer.AssemblyInfoInputs.cache
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\RepositoryLayer.AssemblyInfo.cs
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\RepositoryLayer.csproj.CoreCompileInputs.cache
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\RepositoryLayer.csproj.CopyComplete
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\RepositoryLayer.dll
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\refint\RepositoryLayer.dll
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\RepositoryLayer.pdb
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\RepositoryLayer.genruntimeconfig.cache
+E:\Task 2\RecipesAPI\Recipes.API\REpositoryLayer\obj\Debug\net7.0\ref\RepositoryLayer.dll
