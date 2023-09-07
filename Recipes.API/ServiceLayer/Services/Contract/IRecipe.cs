@@ -18,10 +18,16 @@ namespace ServiceLayer.Services.Contract
         // add a recipe
          string AddRecipe(recipe recipe);
 
+        //get image url
+        string GetImageUrl(string imgName);
         //edite a recipe
-         string EditeRecipe(int id,recipe recipe);
+        string EditeRecipe(int id,recipe recipe);
 
         //delet a recipe
          string RemoveRecipe(int id);
+
+        //testing 
+
+
     }
 }

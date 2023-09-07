@@ -13,9 +13,15 @@ namespace DomainLayer.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
+        [MinLength(3)]
         public string Name { get; set; }
+        [Required]
+        [MinLength(1)]
         public string Ingredients { get; set; }
+        [Required]
+        [MinLength(1)]
         public string Steps { get; set; }
-        public string ImageName { get; set; }
+        public string? Image { get; set; }
     }
 }

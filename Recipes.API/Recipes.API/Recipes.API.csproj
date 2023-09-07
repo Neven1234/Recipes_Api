@@ -19,4 +19,9 @@
     <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resourcess\images\" />
+    <Folder Include="wwwroot\Uploads\" />
+  </ItemGroup>
+
 </Project>

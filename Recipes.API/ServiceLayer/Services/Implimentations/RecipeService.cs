@@ -7,23 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
+
 namespace ServiceLayer.Services.Implimentations
 {
     public class RecipeService : IRecipe
     {
         private readonly RecipeDbContext _dbContext;
 
+        public string imgname;
         public RecipeService(RecipeDbContext dbContext)
         {
             this._dbContext = dbContext;
         }
 
+
         //add new recipy
         public string AddRecipe(recipe recipe)
         {
+           
             try
             {
-                this._dbContext.recipes.Add(recipe);
+                var Recipe = new recipe()
+                {
+                    Name = recipe.Name,
+                    Ingredients = recipe.Ingredients,
+                    Steps = recipe.Steps,
+                    Image = recipe.Image,
+                };
+                this._dbContext.recipes.Add(Recipe);
                 this._dbContext.SaveChanges();
                 return "Added Succesfully";
             }
@@ -58,6 +71,12 @@ namespace ServiceLayer.Services.Implimentations
             }
         }
 
+        //get image url
+        public string GetImageUrl(string imgName)
+        {
+            return "https://localhost:7206/Resourcess/images" + imgName;
+        }
+
         //get a single recipe
         public recipe GetRecipe(int id)
         {
@@ -87,5 +106,9 @@ namespace ServiceLayer.Services.Implimentations
           
 
         }
+        //testing
+        
+
+
     }
 }

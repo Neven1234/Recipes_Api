@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Task 2\\RecipesAPI\\Recipes.API\\DomainLayer\\DomainLayer.csproj": {}
+    "E:\\Task 2\\Recipes_Api\\Recipes.API\\DomainLayer\\DomainLayer.csproj": {}
   },
   "projects": {
-    "E:\\Task 2\\RecipesAPI\\Recipes.API\\DomainLayer\\DomainLayer.csproj": {
+    "E:\\Task 2\\Recipes_Api\\Recipes.API\\DomainLayer\\DomainLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Task 2\\RecipesAPI\\Recipes.API\\DomainLayer\\DomainLayer.csproj",
+        "projectUniqueName": "E:\\Task 2\\Recipes_Api\\Recipes.API\\DomainLayer\\DomainLayer.csproj",
         "projectName": "DomainLayer",
-        "projectPath": "E:\\Task 2\\RecipesAPI\\Recipes.API\\DomainLayer\\DomainLayer.csproj",
+        "projectPath": "E:\\Task 2\\Recipes_Api\\Recipes.API\\DomainLayer\\DomainLayer.csproj",
         "packagesPath": "C:\\Users\\JC.TECH\\.nuget\\packages\\",
-        "outputPath": "E:\\Task 2\\RecipesAPI\\Recipes.API\\DomainLayer\\obj\\",
+        "outputPath": "E:\\Task 2\\Recipes_Api\\Recipes.API\\DomainLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

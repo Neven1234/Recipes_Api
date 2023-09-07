@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "KooTzuNiGpIQfzXW5SaFRboh/Eq4UYWCpmgo/TsKlms=",
+  "Hash": "l76J1/awswRGMWcSH1wWhSfNoweIMi4uPcCGKRCLliM=",
   "Source": "Recipes.API",
   "BasePath": "_content/Recipes.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Recipes.API\\wwwroot",
+      "Source": "Recipes.API",
+      "ContentRoot": "E:\\Task 2\\Recipes_Api\\Recipes.API\\Recipes.API\\wwwroot\\",
+      "BasePath": "_content/Recipes.API",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

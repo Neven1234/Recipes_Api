@@ -10,3 +10,15 @@ E:\Task 2\RecipesAPI\Recipes.API\DomainLayer\obj\Debug\net7.0\DomainLayer.dll
 E:\Task 2\RecipesAPI\Recipes.API\DomainLayer\obj\Debug\net7.0\refint\DomainLayer.dll
 E:\Task 2\RecipesAPI\Recipes.API\DomainLayer\obj\Debug\net7.0\DomainLayer.pdb
 E:\Task 2\RecipesAPI\Recipes.API\DomainLayer\obj\Debug\net7.0\ref\DomainLayer.dll
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\bin\Debug\net7.0\DomainLayer.deps.json
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\bin\Debug\net7.0\DomainLayer.dll
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\bin\Debug\net7.0\DomainLayer.pdb
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\obj\Debug\net7.0\DomainLayer.csproj.AssemblyReference.cache
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\obj\Debug\net7.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\obj\Debug\net7.0\DomainLayer.AssemblyInfoInputs.cache
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\obj\Debug\net7.0\DomainLayer.AssemblyInfo.cs
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\obj\Debug\net7.0\DomainLayer.csproj.CoreCompileInputs.cache
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\obj\Debug\net7.0\DomainLayer.dll
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\obj\Debug\net7.0\refint\DomainLayer.dll
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\obj\Debug\net7.0\DomainLayer.pdb
+E:\Task 2\Recipes_Api\Recipes.API\DomainLayer\obj\Debug\net7.0\ref\DomainLayer.dll
