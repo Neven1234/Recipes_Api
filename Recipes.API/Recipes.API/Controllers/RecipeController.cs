@@ -64,7 +64,14 @@ namespace Recipes.API.Controllers
             var res = this._irecipe.RemoveRecipe(id);
             return Ok(res);
         }
-        public string url;
+        //search
+        [HttpGet("search/{name}")]
+        public IActionResult Diltered(string name) 
+        { 
+            var res=this._irecipe.Filter(name);
+            return Ok(res);
+        }
+
         //upload image
 
         [HttpPost("ImageUpload"), DisableRequestSizeLimit]
@@ -98,6 +105,7 @@ namespace Recipes.API.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
+        
     }
 
 }

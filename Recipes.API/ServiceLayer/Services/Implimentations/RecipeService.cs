@@ -73,6 +73,29 @@ namespace ServiceLayer.Services.Implimentations
             }
         }
 
+        //search function
+        public List< recipe> Filter(string NameOrIngreadiant)
+        {
+            NameOrIngreadiant = string.IsNullOrEmpty(NameOrIngreadiant) ? "" : NameOrIngreadiant.ToLower();
+           List<recipe> filters = new List<recipe>();
+            var recipes = (from R in this._dbContext.recipes
+                           where NameOrIngreadiant == "" ||
+                           R.Name.ToLower().Contains(NameOrIngreadiant)
+                           || R.Ingredients.ToLower().Contains(NameOrIngreadiant)
+                            select new recipe
+                            {
+                                Id = R.Id,
+                                Name = R.Name,
+                                Ingredients = R.Ingredients,
+                                Steps   = R.Steps,
+                                Image   = R.Image,
+                            }
+
+                           );
+            return recipes.ToList();
+                        
+        }
+
         //get image url
         public string GetImageUrl(string imgName)
         {

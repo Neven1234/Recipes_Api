@@ -28,6 +28,7 @@ namespace ServiceLayer.Services.Contract
 
         //testing 
 
-
+        //search
+        List<recipe> Filter(string NameOrIngreadiant);
     }
 }
