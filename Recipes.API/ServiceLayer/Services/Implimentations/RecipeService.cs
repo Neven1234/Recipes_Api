@@ -57,6 +57,8 @@ namespace ServiceLayer.Services.Implimentations
                     recipeValue.Name = recipe.Name;
                     recipeValue.Steps = recipe.Steps;
                     recipeValue.Ingredients = recipe.Ingredients;
+                    recipeValue.Image = recipe.Image;
+                    this._dbContext.Update(recipeValue);
                     this._dbContext.SaveChanges();
                     return "updated Seccesfully";
                 }

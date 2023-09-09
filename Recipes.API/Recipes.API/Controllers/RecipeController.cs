@@ -58,7 +58,7 @@ namespace Recipes.API.Controllers
         }
 
         //delet recipe
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public IActionResult DeleteRecipe(int id)
         {
             var res = this._irecipe.RemoveRecipe(id);
