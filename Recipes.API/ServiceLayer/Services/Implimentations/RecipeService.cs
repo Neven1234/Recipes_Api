@@ -81,8 +81,7 @@ namespace ServiceLayer.Services.Implimentations
             var recipes = (from R in this._dbContext.recipes
                            where NameOrIngreadiant == "" ||
                            R.Name.ToLower().Contains(NameOrIngreadiant)
-                           || R.Ingredients.ToLower().Contains(NameOrIngreadiant)
-                            select new recipe
+            select new recipe
                             {
                                 Id = R.Id,
                                 Name = R.Name,
@@ -94,6 +93,20 @@ namespace ServiceLayer.Services.Implimentations
                            );
             return recipes.ToList();
                         
+        }
+        // search by ingredients
+        public List<recipe> FilterIngredients(string ingredients)
+        {
+            ingredients = string.IsNullOrEmpty(ingredients) ? "" : ingredients.ToLower();
+            var Lista=ingredients.Split(",");
+            List<recipe> filters = new List<recipe>();
+            var recipes = from R in this._dbContext.recipes select R;
+            foreach( var Ingr in Lista)
+            {
+                recipes = recipes.Where(X => X.Ingredients.ToLower().Contains(Ingr));
+            }
+                       
+            return recipes.ToList();
         }
 
         //get image url

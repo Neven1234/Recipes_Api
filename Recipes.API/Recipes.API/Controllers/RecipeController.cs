@@ -64,13 +64,21 @@ namespace Recipes.API.Controllers
             var res = this._irecipe.RemoveRecipe(id);
             return Ok(res);
         }
-        //search
+        //search buy name
         [HttpGet("search/{name}")]
-        public IActionResult Diltered(string name) 
+        public IActionResult searchBuyName(string name) 
         { 
             var res=this._irecipe.Filter(name);
             return Ok(res);
         }
+        //search buy ingredients
+        [HttpGet("searchIng/{ingredients}")]
+        public IActionResult searchBuyIngredients(string ingredients)
+        {
+            var res = this._irecipe.FilterIngredients(ingredients);
+            return Ok(res);
+        }
+
 
         //upload image
 
