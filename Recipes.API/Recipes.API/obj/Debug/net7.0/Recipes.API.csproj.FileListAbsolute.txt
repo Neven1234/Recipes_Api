@@ -100,6 +100,10 @@ E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Web.Helper
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Web.WebPages.Deployment.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Web.WebPages.Razor.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Web.WebPages.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
@@ -109,6 +113,9 @@ E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.EntityF
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.Identity.Client.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll

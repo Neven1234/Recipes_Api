@@ -9,29 +9,29 @@ namespace ServiceLayer.Services.Contract
 {
     public interface IRecipe
     {
-        //get all recipes
-         List<recipe> GetRecipes();
+        //Get all recipes
+        IEnumerable<recipe> GetRecipes();
 
         //get singl recipe
-          recipe GetRecipe(int id);
+        recipe GetRecipe(int id);
 
         // add a recipe
-         string AddRecipe(recipe recipe);
+        string AddRecipe(recipe recipe);
 
         //get image url
         string GetImageUrl(string imgName);
         //edite a recipe
-        string EditeRecipe(int id,recipe recipe);
+        string EditeRecipe(int id, recipe recipe);
 
         //delet a recipe
-         string RemoveRecipe(int id);
+        string RemoveRecipe(int id);
 
         //testing 
 
         //search by name
-        List<recipe> Filter(string NameOrIngreadiant);
+        IEnumerable<recipe> Filter(string NameOrIngreadiant);
 
         //search by ingredients
-        List<recipe> FilterIngredients(string ingredients);
+        IEnumerable<recipe> FilterIngredients(string ingredients);
     }
 }

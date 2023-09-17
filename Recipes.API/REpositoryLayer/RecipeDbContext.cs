@@ -11,10 +11,10 @@ namespace RepositoryLayer
     public class RecipeDbContext:DbContext
     {
         public RecipeDbContext(DbContextOptions options):base(options) { }
-        
+
         public DbSet<recipe> recipes { get; set; }
-        public DbSet<IngredientsList> ingredients { get; set; } 
-            
-        
+        public DbSet<IngredientsList> ingredients { get; set; }
+        public DbSet<User> users { get; set; }
+
     }
 }

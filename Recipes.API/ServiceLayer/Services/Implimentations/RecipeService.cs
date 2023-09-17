@@ -1,5 +1,6 @@
 ﻿using DomainLayer.Models;
 using RepositoryLayer;
+using RepositoryLayer.Interfaces;
 using ServiceLayer.Services.Contract;
 using System;
 using System.Collections.Generic;
@@ -15,137 +16,61 @@ namespace ServiceLayer.Services.Implimentations
     public class RecipeService : IRecipe
     {
         private readonly RecipeDbContext _dbContext;
-
+        private readonly IRepository<recipe> _repository;
         public string imgname;
-        public RecipeService(RecipeDbContext dbContext)
+        
+        public RecipeService(RecipeDbContext dbContext , IRepository<recipe> repository )
         {
             this._dbContext = dbContext;
+            this._repository = repository;
         }
-
 
         //add new recipy
         public string AddRecipe(recipe recipe)
         {
-           
-            try
-            {
-                var Recipe = new recipe()
-                {
-                    Name = recipe.Name,
-                    Ingredients = recipe.Ingredients,
-                    Steps = recipe.Steps,
-                    Image = recipe.Image,
-                };
-                this._dbContext.recipes.Add(Recipe);
-                this._dbContext.SaveChanges();
-                return "Added Succesfully";
-            }
-            catch(Exception ex)
-            {
-                return ex.Message;
-            }
+           return this._repository.AddRecipe(recipe);
         }
 
-        //edite a recipe
         public string EditeRecipe(int id, recipe recipe)
         {
-            try
-            {
-                var recipeValue = this._dbContext.recipes.Find(id);
-                if(recipeValue != null)
-                {
-                    recipeValue.Name = recipe.Name;
-                    recipeValue.Steps = recipe.Steps;
-                    recipeValue.Ingredients = recipe.Ingredients;
-                    recipeValue.Image = recipe.Image;
-                    this._dbContext.Update(recipeValue);
-                    this._dbContext.SaveChanges();
-                    return "updated Seccesfully";
-                }
-                else
-                {
-                    return " recipe not found";
-                }
-            }
-            catch(Exception ex)
-            {
-                return ex.Message;
-            }
+          return this._repository.EditeRecipe(id, recipe);
         }
 
-        //search function
-        public List< recipe> Filter(string NameOrIngreadiant)
+        public IEnumerable<recipe> Filter(string NameOrIngreadiant)
         {
-            NameOrIngreadiant = string.IsNullOrEmpty(NameOrIngreadiant) ? "" : NameOrIngreadiant.ToLower();
-           List<recipe> filters = new List<recipe>();
-            var recipes = (from R in this._dbContext.recipes
-                           where NameOrIngreadiant == "" ||
-                           R.Name.ToLower().Contains(NameOrIngreadiant)
-            select new recipe
-                            {
-                                Id = R.Id,
-                                Name = R.Name,
-                                Ingredients = R.Ingredients,
-                                Steps   = R.Steps,
-                                Image   = R.Image,
-                            }
-
-                           );
-            return recipes.ToList();
-                        
+            return this._repository.Filter(NameOrIngreadiant);
         }
-        // search by ingredients
-        public List<recipe> FilterIngredients(string ingredients)
+
+        public IEnumerable<recipe> FilterIngredients(string ingredients)
         {
-            ingredients = string.IsNullOrEmpty(ingredients) ? "" : ingredients.ToLower();
-            var Lista=ingredients.Split(",");
-            List<recipe> filters = new List<recipe>();
-            var recipes = from R in this._dbContext.recipes select R;
-            foreach( var Ingr in Lista)
-            {
-                recipes = recipes.Where(X => X.Ingredients.ToLower().Contains(Ingr));
-            }
-                       
-            return recipes.ToList();
+            return this._repository.FilterIngredients(ingredients);
         }
 
-        //get image url
         public string GetImageUrl(string imgName)
         {
-            return "https://localhost:7206/Resourcess/images" + imgName;
+           return this._repository.GetImageUrl(imgName);
         }
 
-        //get a single recipe
         public recipe GetRecipe(int id)
         {
-            return this._dbContext.recipes.Find(id);
+           return this._repository.GetRecipe(id);
         }
 
-        //get all recipes
-        public List<recipe> GetRecipes()
+        public IEnumerable<recipe> GetRecipes()
         {
-            return this._dbContext.recipes.ToList();
+            return this._repository.GetRecipes();
         }
 
-        //remove a recipy
         public string RemoveRecipe(int id)
         {
-            try
-            {
-                var DeletedRecipe = this._dbContext.recipes.Find(id);
-                this._dbContext.Remove(DeletedRecipe);
-                this._dbContext.SaveChanges(true);
-                return "removed successfully";
-            }
-            catch(Exception ex)
-            {
-                return ex.Message;
-            }
-          
-
+            return this._repository.RemoveRecipe(id);
         }
+
+
+       
+
         //testing
-        
+
 
 
     }

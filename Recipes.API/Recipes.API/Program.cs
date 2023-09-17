@@ -1,8 +1,12 @@
 using DomainLayer.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using RepositoryLayer;
+using RepositoryLayer.implimentation;
+using RepositoryLayer.Interfaces;
 using ServiceLayer.Services.Contract;
 using ServiceLayer.Services.Implimentations;
 using System.Net.NetworkInformation;
@@ -21,11 +25,29 @@ builder.Services.AddDbContext<RecipeDbContext>(option=>option.UseSqlServer(build
 builder.Services.AddScoped<IRecipe, RecipeService>();
 builder.Services.AddScoped<IIngredients, IngredientsService>();
 
+builder.Services.AddScoped<IRepository<recipe>,RepositoryImp<recipe>>();
+builder.Services.AddScoped<IRepUser<User>,RepUserImpl<User>>();
+builder.Services.AddScoped<Iuser, userServices>();
+
+
 builder.Services.Configure<FormOptions>(o =>
 {
     o.ValueLengthLimit = int.MaxValue;
     o.MultipartBodyLengthLimit = int.MaxValue;
     o.MemoryBufferThreshold = int.MaxValue;
+});
+
+//identy
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().
+    AddEntityFrameworkStores<RecipeDbContext>().
+    AddDefaultTokenProviders();
+//authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 });
 
 

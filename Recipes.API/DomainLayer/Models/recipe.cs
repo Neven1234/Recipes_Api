@@ -23,5 +23,7 @@ namespace DomainLayer.Models
         [MinLength(1)]
         public string Steps { get; set; }
         public string? Image { get; set; }
+
+        //navigation
     }
 }
