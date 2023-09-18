@@ -10,7 +10,7 @@ namespace ServiceLayer.Services.Contract
     public interface IIngredients
     {
         //get all ingerdiance
-        List<IngredientsList> GetIngredients();
+        IEnumerable<IngredientsList> GetIngredients();
         string AddIngredients(IngredientsList ingredients);
     }
 }

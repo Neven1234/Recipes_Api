@@ -1,6 +1,7 @@
 ﻿using DomainLayer.Models;
 using iTextSharp.tool.xml.html;
 using RepositoryLayer;
+using RepositoryLayer.Interfaces;
 using ServiceLayer.Services.Contract;
 using System;
 using System.Collections.Generic;
@@ -14,29 +15,19 @@ namespace ServiceLayer.Services.Implimentations
 {
     public class IngredientsService : IIngredients
     {
-        private readonly RecipeDbContext _dbContext;
+        private readonly IIngredientRepository<IngredientsList> _repository;
 
-        public IngredientsService(RecipeDbContext dbContext)
+        public IngredientsService(IIngredientRepository<IngredientsList> repository)
         {
-            this._dbContext = dbContext;
+            this._repository = repository;
         }
         public string AddIngredients(IngredientsList ingredients)
         {
-            try
-            {
-                this._dbContext.ingredients.Add(ingredients);
-                this._dbContext.SaveChanges();
-                return "Added Succesfully";
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-        }
+            return this._repository.AddIngredients(ingredients);        }
 
-        public List<IngredientsList> GetIngredients()
+        public IEnumerable<IngredientsList> GetIngredients()
         {
-            return this._dbContext.ingredients.ToList();
+           return this._repository.GetIngredients();
         }
     }
 }

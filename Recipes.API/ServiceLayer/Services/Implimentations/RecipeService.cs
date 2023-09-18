@@ -16,10 +16,10 @@ namespace ServiceLayer.Services.Implimentations
     public class RecipeService : IRecipe
     {
         private readonly RecipeDbContext _dbContext;
-        private readonly IRepository<recipe> _repository;
+        private readonly IRecipeRepository<recipe> _repository;
         public string imgname;
         
-        public RecipeService(RecipeDbContext dbContext , IRepository<recipe> repository )
+        public RecipeService(RecipeDbContext dbContext , IRecipeRepository<recipe> repository )
         {
             this._dbContext = dbContext;
             this._repository = repository;

@@ -11,9 +11,9 @@ namespace ServiceLayer.Services.Implimentations
 {
     public class userServices : Iuser
     {
-        private readonly IRepUser<User> _repUser;
+        private readonly IUserRepository<User> _repUser;
 
-        public userServices(IRepUser<User> repUser)
+        public userServices(IUserRepository<User> repUser)
         {
             this._repUser = repUser;
         }
