@@ -43,7 +43,6 @@ namespace RepositoryLayer.implimentation
                     var jwtToken = getToken(authClaims);
                     var token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
                     var expiration = jwtToken.ValidTo;
-                    userr.Token = token;
                     this._dbContext.Update(userr);
                     this._dbContext.SaveChanges();
                     return  token ;
@@ -68,24 +67,22 @@ namespace RepositoryLayer.implimentation
                 {
                     return "user exist";
                 }
-                IdentityUser us = new()
+                else
                 {
-                    Email = user.Email,
-                    SecurityStamp = Guid.NewGuid().ToString(),
-                    UserName = user.UserName
-
-                };
-                var res = this._userManager.CreateAsync(us, user.Password);
-                if (res.IsCompletedSuccessfully)
-                {                  
                     this.entities.Add(user);
                     this._dbContext.SaveChanges();
                     return "User Created Successfully";
                 }
-                else
-                {
-                    return "error";
-                }
+                //IdentityUser us = new()
+                //{
+                //    Email = user.Email,
+                //    SecurityStamp = Guid.NewGuid().ToString(),
+                //    UserName = user.UserName
+
+                //};
+               // var res = this._userManager.CreateAsync(us, user.Password);
+                                 
+                    
             }
             catch(Exception ex)
             {

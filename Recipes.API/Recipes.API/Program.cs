@@ -65,11 +65,11 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.UseStaticFiles(new StaticFileOptions()
-{
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resourcess")),
-    RequestPath = new PathString("/Resourcess")
-});
+//app.UseStaticFiles(new StaticFileOptions()
+//{
+//    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resourcess")),
+//    RequestPath = new PathString("/Resourcess")
+//});
 
 app.UseCors(policy=>policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseAuthorization();
