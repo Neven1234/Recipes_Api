@@ -114,6 +114,7 @@ namespace RepositoryLayer.implimentation
                 signingCredentials: new SigningCredentials(authSigninKey, SecurityAlgorithms.HmacSha256)
                 );
             return token;
+
         }
     }
 }
