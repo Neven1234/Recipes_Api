@@ -17,40 +17,46 @@ namespace RepositoryLayer.implimentation
     public class UserRepository<T> : IUserRepository<T> where T : User
     {
         private readonly RecipeDbContext _dbContext;
-        private readonly DbSet<T> entities;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly DbSet<T> entities;
         private readonly IConfiguration _configuration;
-        public UserRepository(RecipeDbContext dbContext, UserManager<IdentityUser> userManager, IConfiguration configuration)
+
+        public UserRepository(RecipeDbContext dbContext,UserManager<IdentityUser> userManager, IConfiguration configuration)
         {
             this._dbContext = dbContext;
-            this.entities = this._dbContext.Set<T>();
             this._userManager = userManager;
+            this.entities = this._dbContext.Set<T>();
             this._configuration = configuration;
         }
 
-        public  string LogIn(T user)
+        public async Task< string> LogIn(T user)
         {
             try 
             {
-                var userr = this.entities.FirstOrDefault(x => x.Password == user.Password && x.UserName == user.UserName);
-                if (userr != null)
+                var userExist = await _userManager.FindByNameAsync(user.UserName);
+                
+                if (userExist!=null && await _userManager.CheckPasswordAsync(userExist,user.Password))
                 {
                     var authClaims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name,user.UserName),
                         new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString())
                     };
+                    var Roles = await _userManager.GetRolesAsync(userExist);
+                    foreach(var role in Roles)
+                    {
+                        authClaims.Add(new Claim(ClaimTypes.Role, role));
+                    }
                     var jwtToken = getToken(authClaims);
                     var token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
                     var expiration = jwtToken.ValidTo;
-                    this._dbContext.Update(userr);
-                    this._dbContext.SaveChanges();
-                    return  token ;
+                    return token;
                 }
                 else
                 {
                     return "Username or Passwored are wrong";
                 }
+               
             }
             catch (Exception ex)
             {
@@ -62,32 +68,37 @@ namespace RepositoryLayer.implimentation
         {
             try
             {
-                var userr = this.entities.FirstOrDefault(X => X.UserName == user.UserName);
-                if (userr != null)
+                var userEx = await _userManager.FindByEmailAsync(user.Email);
+                if (userEx != null)
                 {
-                    return "user exist";
+                    return ("User exist");
                 }
                 else
                 {
-                    this.entities.Add(user);
-                    this._dbContext.SaveChanges();
-                    return "User Created Successfully";
+                    IdentityUser userr = new()
+                    {
+                        Email = user.Email,
+                        SecurityStamp = Guid.NewGuid().ToString(),
+                        UserName = user.UserName,
+                    };
+                    var res = await _userManager.CreateAsync(userr, user.Password);
+                    if (res.Succeeded)
+                    {
+                       await  _userManager.AddToRoleAsync(userr, "User");
+                        return ("ceated");
+                    }
+                    else
+                    {
+                        return ("error");
+                    }
                 }
-                //IdentityUser us = new()
-                //{
-                //    Email = user.Email,
-                //    SecurityStamp = Guid.NewGuid().ToString(),
-                //    UserName = user.UserName
-
-                //};
-               // var res = this._userManager.CreateAsync(us, user.Password);
-                                 
-                    
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return ex.Message;
+                return (ex.Message);
             }
+
+          
         }
 
 

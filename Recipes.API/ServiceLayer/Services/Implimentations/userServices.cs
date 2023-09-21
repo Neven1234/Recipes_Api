@@ -17,7 +17,7 @@ namespace ServiceLayer.Services.Implimentations
         {
             this._repUser = repUser;
         }
-        public string LogIn(User user)
+        public Task< string> LogIn(User user)
         {
             return this._repUser.LogIn(user);
         }

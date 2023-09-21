@@ -12,7 +12,7 @@ namespace RepositoryLayer.Interfaces
         //Regist
         Task<string> Regist(T user);
         //Log in
-        string LogIn(T user);
+       Task< string> LogIn(T user);
 
        
     }

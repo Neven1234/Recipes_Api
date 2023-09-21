@@ -11,7 +11,7 @@ namespace ServiceLayer.Services.Contract
     {
         //log in
         
-        string LogIn(User user);
+       Task< string> LogIn(User user);
 
         //regist
         Task<string> Regist(User user);
