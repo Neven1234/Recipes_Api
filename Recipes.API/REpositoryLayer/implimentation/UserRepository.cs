@@ -49,8 +49,8 @@ namespace RepositoryLayer.implimentation
                     }
                     var jwtToken = getToken(authClaims);
                     var token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
-                    var expiration = jwtToken.ValidTo;
-                    return token;
+                    var expiration = DateTime.Now.AddDays(3);
+                    return token+" "+expiration;
                 }
                 else
                 {
