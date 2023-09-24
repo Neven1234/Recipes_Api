@@ -1,32 +1,41 @@
 ﻿using DomainLayer.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Interfaces;
+using RepositoryLayer.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Memory;
+using System.Diagnostics;
 
 namespace RepositoryLayer.implimentation
 {
     public class RecipeRepository<T> : IRecipeRepository<T> where T : recipe
     {
         private readonly RecipeDbContext _dbContext;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IMemoryCache _cache;
         private readonly DbSet<T> entity;
-
-        public RecipeRepository(RecipeDbContext dbContext)
+        private readonly string cacheKey="Recipes";
+        private  string ViewedRecipeId="";
+        public RecipeRepository(RecipeDbContext dbContext, UserManager<IdentityUser> userManager, IMemoryCache cache)
         {
             _dbContext = dbContext;
             entity = _dbContext.Set<T>();
+            _userManager = userManager;
+            this._cache = cache;
         }
 
 
         //add recipe
-        public string AddRecipe(T recipe)
+        public async Task< string> AddRecipe(T recipe)
         {
             try
             {
-
+               
                 entity.Add(recipe);
                 _dbContext.SaveChanges();
                 return "Added Succesfully";
@@ -111,13 +120,48 @@ namespace RepositoryLayer.implimentation
         //get single recipe
         public T GetRecipe(int id)
         {
-            return entity.FirstOrDefault(x => x.Id == id);
+            var stopWathc = new Stopwatch();
+            stopWathc.Start();
+            this.ViewedRecipeId= id.ToString();
+            if (_cache.TryGetValue(ViewedRecipeId, out T recipe))
+            {
+                return recipe;
+            }
+            else
+            {
+                recipe =entity.FirstOrDefault(x => x.Id == id);
+                _cache.Set(ViewedRecipeId, recipe);
+                var cachEnterOption = new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(TimeSpan.FromSeconds(45))
+                    .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600))
+                    .SetPriority(CacheItemPriority.Normal);
+                stopWathc.Stop();
+                return recipe;
+            }
+            
         }
 
         //gel all recipes
         public IEnumerable<T> GetRecipes()
+
         {
-            return entity.AsEnumerable();
+            var stopWathc = new Stopwatch();
+            stopWathc.Start();
+            if(_cache.TryGetValue(cacheKey,out IEnumerable<T> recipes))
+            {
+                return recipes.AsEnumerable();
+            }
+            else
+            {
+                recipes=entity.ToList();
+                 _cache.Set(cacheKey,recipes);
+                var cachEnterOption = new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(TimeSpan.FromSeconds(45))
+                    .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600))
+                    .SetPriority(CacheItemPriority.Normal);
+            }
+            stopWathc.Stop();
+            return recipes.AsEnumerable();
         }
 
 
@@ -136,5 +180,6 @@ namespace RepositoryLayer.implimentation
                 return ex.Message;
             }
         }
+       
     }
 }

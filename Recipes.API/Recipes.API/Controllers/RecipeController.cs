@@ -34,10 +34,10 @@ namespace Recipes.API.Controllers
 
         //add recipe
         [HttpPost]
-        public IActionResult AddNewRecipe(recipe newRecipecs)
+        public async Task< IActionResult> AddNewRecipe(recipe newRecipecs)
         {
            
-            var res = this._irecipe.AddRecipe(newRecipecs);
+            var res = await _irecipe.AddRecipe(newRecipecs);
             return Ok(res);
         }
 

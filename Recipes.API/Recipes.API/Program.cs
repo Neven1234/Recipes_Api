@@ -50,6 +50,8 @@ builder.Services.AddAuthentication(options =>
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 });
+//cahe
+builder.Services.AddMemoryCache();
 
 
 var app = builder.Build();

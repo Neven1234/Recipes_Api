@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using RepositoryLayer.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,8 @@ namespace RepositoryLayer
         {
             base.OnModelCreating(modelBuilder);
             SeedRoles(modelBuilder);
+           
+           
         }
         private void SeedRoles(ModelBuilder builder)
         {

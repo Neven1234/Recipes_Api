@@ -16,5 +16,7 @@ namespace DomainLayer.Models
         public string Password { get; set; }
       
         public string Email { get; set; }
+
+        //public ICollection<recipe>? recipes { get; set; }
     }
 }

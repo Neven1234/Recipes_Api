@@ -26,9 +26,9 @@ namespace ServiceLayer.Services.Implimentations
         }
 
         //add new recipy
-        public string AddRecipe(recipe recipe)
+        public async Task< string> AddRecipe(recipe recipe)
         {
-           return this._repository.AddRecipe(recipe);
+           return await _repository.AddRecipe(recipe );
         }
 
         public string EditeRecipe(int id, recipe recipe)

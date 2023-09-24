@@ -16,7 +16,7 @@ namespace RepositoryLayer.Interfaces
         T GetRecipe(int id);
 
         // add a recipe
-        string AddRecipe(T recipe);
+       Task< string> AddRecipe(T recipe );
 
         //get image url
         string GetImageUrl(string imgName);
