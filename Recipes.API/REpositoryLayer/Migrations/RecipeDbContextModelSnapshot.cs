@@ -87,6 +87,10 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("recipes");
@@ -121,7 +125,7 @@ namespace RepositoryLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "834782d2-78a8-4e2b-a600-c6839a8b406f",
+                            Id = "0288a4b0-ffea-4cd0-9f00-42dca2e5c336",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"

@@ -23,6 +23,9 @@ namespace DomainLayer.Models
         [MinLength(1)]
         public string Steps { get; set; }
         public string? Image { get; set; }
+
+        [ForeignKey("UserID")]
+        public string UserName { get; set; }
         //navigation
         //public Profile? Profile { get; set; }
 

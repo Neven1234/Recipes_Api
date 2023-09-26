@@ -24,11 +24,9 @@ builder.Services.AddDbContext<RecipeDbContext>(option=>option.UseSqlServer(build
 
 builder.Services.AddScoped<IRecipe, RecipeService>();
 builder.Services.AddScoped<IIngredients, IngredientsService>();
-
-builder.Services.AddScoped<IRecipeRepository<recipe>,RecipeRepository<recipe>>();
-builder.Services.AddScoped<IUserRepository<User>,UserRepository<User>>();
+builder.Services.AddTransient(typeof(IRepository<>),typeof(RepositoryImplementation<>));
 builder.Services.AddScoped<Iuser, userServices>();
-builder.Services.AddScoped<IIngredientRepository<IngredientsList>,IngredienRepository<IngredientsList>>();
+
 
 
 builder.Services.Configure<FormOptions>(o =>

@@ -11,6 +11,6 @@ namespace ServiceLayer.Services.Contract
     {
         //get all ingerdiance
         IEnumerable<IngredientsList> GetIngredients();
-        string AddIngredients(IngredientsList ingredients);
+       Task< string> AddIngredients(IngredientsList ingredients);
     }
 }

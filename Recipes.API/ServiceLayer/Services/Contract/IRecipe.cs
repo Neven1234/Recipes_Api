@@ -16,10 +16,8 @@ namespace ServiceLayer.Services.Contract
         recipe GetRecipe(int id);
 
         // add a recipe
-       Task< string> AddRecipe(recipe recipe);
+       Task< string> AddRecipe(recipe recipe, string username);
 
-        //get image url
-        string GetImageUrl(string imgName);
         //edite a recipe
         string EditeRecipe(int id, recipe recipe);
 
