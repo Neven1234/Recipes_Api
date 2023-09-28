@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 using RepositoryLayer;
 using RepositoryLayer.implimentation;
@@ -10,9 +11,12 @@ using RepositoryLayer.Interfaces;
 using ServiceLayer.Services.Contract;
 using ServiceLayer.Services.Implimentations;
 using System.Net.NetworkInformation;
+using System.Web.Helpers;
+using UserManger.Models;
+using UserManger.Service;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var configuration = builder.Configuration;
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -26,7 +30,7 @@ builder.Services.AddScoped<IRecipe, RecipeService>();
 builder.Services.AddScoped<IIngredients, IngredientsService>();
 builder.Services.AddTransient(typeof(IRepository<>),typeof(RepositoryImplementation<>));
 builder.Services.AddScoped<Iuser, userServices>();
-
+builder.Services.AddScoped<IRateAndReview, RateAndReviewService>();
 
 
 builder.Services.Configure<FormOptions>(o =>
@@ -35,6 +39,12 @@ builder.Services.Configure<FormOptions>(o =>
     o.MultipartBodyLengthLimit = int.MaxValue;
     o.MemoryBufferThreshold = int.MaxValue;
 });
+//configuration email
+var emailConfig = configuration
+    .GetSection("EmailConfiguration")
+    .Get<EmailConfigration>();
+builder.Services.AddSingleton(emailConfig);
+builder.Services.AddScoped<IEmail, EmailService>();
 
 //identy
 

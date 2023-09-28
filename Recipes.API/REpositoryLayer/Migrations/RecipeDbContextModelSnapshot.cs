@@ -39,6 +39,35 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("ingredients");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.RateAndReview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Review")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("reviews");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -125,7 +154,7 @@ namespace RepositoryLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0288a4b0-ffea-4cd0-9f00-42dca2e5c336",
+                            Id = "31a242a2-8b3a-4651-86f8-c8e804ec9a6a",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"
@@ -301,6 +330,15 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.RateAndReview", b =>
+                {
+                    b.HasOne("DomainLayer.Models.recipe", null)
+                        .WithMany()
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

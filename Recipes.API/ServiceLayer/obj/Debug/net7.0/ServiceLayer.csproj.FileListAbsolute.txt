@@ -32,3 +32,5 @@ E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\ServiceLayer.dll
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\refint\ServiceLayer.dll
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\ServiceLayer.pdb
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\ref\ServiceLayer.dll
+E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\UserManger.dll
+E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\UserManger.pdb

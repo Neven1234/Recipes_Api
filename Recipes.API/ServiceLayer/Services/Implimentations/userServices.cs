@@ -13,6 +13,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using UserManger.Models;
+using UserManger.Service;
 
 namespace ServiceLayer.Services.Implimentations
 {
@@ -22,11 +24,13 @@ namespace ServiceLayer.Services.Implimentations
         private readonly RecipeDbContext _dbContext;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _configuration;
+        private readonly IEmail _iemail;
 
-        public userServices( UserManager<IdentityUser> userManager, IConfiguration configuration)
+        public userServices( UserManager<IdentityUser> userManager, IConfiguration configuration,IEmail email)
         {
            this._userManager = userManager;
-            this._configuration = configuration;
+           this._configuration = configuration;
+           this._iemail = email;
         }
         public async Task<string> LogIn(User user)
         {
@@ -84,6 +88,11 @@ namespace ServiceLayer.Services.Implimentations
                     if (res.Succeeded)
                     {
                         await _userManager.AddToRoleAsync(userr, "User");
+                        var token = await _userManager.GenerateEmailConfirmationTokenAsync(userr);
+                        var confirmEmail=_userManager.ConfirmEmailAsync(userr,token);
+                        var confirmationLink= "https://localhost:7206/api/Authentication/ConfirmEmail?token=" + token + "&email=" + userr.Email;
+                        var message = new Message(new string[] { userr.Email! }, "confirmation email link", confirmationLink);
+                        _iemail.SendEmail(message);
                         return ("ceated");
                     }
                     else

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj" />
+    <ProjectReference Include="..\UserManger\UserManger.csproj" />
   </ItemGroup>
 
   <ItemGroup>

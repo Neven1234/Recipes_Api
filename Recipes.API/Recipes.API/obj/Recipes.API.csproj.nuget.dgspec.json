@@ -105,6 +105,9 @@
             "projectReferences": {
               "E:\\Task 2\\Recipes_Api\\Recipes.API\\ServiceLayer\\ServiceLayer.csproj": {
                 "projectPath": "E:\\Task 2\\Recipes_Api\\Recipes.API\\ServiceLayer\\ServiceLayer.csproj"
+              },
+              "E:\\Task 2\\Recipes_Api\\Recipes.API\\UserManger\\UserManger.csproj": {
+                "projectPath": "E:\\Task 2\\Recipes_Api\\Recipes.API\\UserManger\\UserManger.csproj"
               }
             }
           }
@@ -279,6 +282,9 @@
               },
               "E:\\Task 2\\Recipes_Api\\Recipes.API\\REpositoryLayer\\RepositoryLayer.csproj": {
                 "projectPath": "E:\\Task 2\\Recipes_Api\\Recipes.API\\REpositoryLayer\\RepositoryLayer.csproj"
+              },
+              "E:\\Task 2\\Recipes_Api\\Recipes.API\\UserManger\\UserManger.csproj": {
+                "projectPath": "E:\\Task 2\\Recipes_Api\\Recipes.API\\UserManger\\UserManger.csproj"
               }
             }
           }
@@ -300,6 +306,76 @@
             "itextsharp.xmlworker": {
               "target": "Package",
               "version": "[5.5.13.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Task 2\\Recipes_Api\\Recipes.API\\UserManger\\UserManger.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Task 2\\Recipes_Api\\Recipes.API\\UserManger\\UserManger.csproj",
+        "projectName": "UserManger",
+        "projectPath": "E:\\Task 2\\Recipes_Api\\Recipes.API\\UserManger\\UserManger.csproj",
+        "packagesPath": "C:\\Users\\JC.TECH\\.nuget\\packages\\",
+        "outputPath": "E:\\Task 2\\Recipes_Api\\Recipes.API\\UserManger\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\JC.TECH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
             }
           },
           "imports": [

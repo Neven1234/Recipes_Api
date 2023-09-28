@@ -91,9 +91,11 @@ E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Recipes.API.pdb
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Azure.Core.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Azure.Identity.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\BouncyCastle.Crypto.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Humanizer.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\itextsharp.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\itextsharp.xmlworker.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\MailKit.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Web.Mvc.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Web.Razor.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Web.Helpers.dll
@@ -128,7 +130,9 @@ E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.OpenApi
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.Web.Infrastructure.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\MimeKit.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Mono.TextTemplating.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\NETCore.MailKit.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -138,6 +142,7 @@ E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Drawing.Co
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Memory.Data.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Runtime.Caching.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Security.Permissions.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\System.Windows.Extensions.dll
@@ -151,12 +156,15 @@ E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\runtimes\win\lib\
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\DomainLayer.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\RepositoryLayer.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\ServiceLayer.dll
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\UserManger.dll
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\ServiceLayer.pdb
+E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\UserManger.pdb
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\DomainLayer.pdb
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\bin\Debug\net7.0\RepositoryLayer.pdb
 E:\Task 2\Recipes_Api\Recipes.API\Recipes.API\obj\Debug\net7.0\Recipes.API.csproj.AssemblyReference.cache

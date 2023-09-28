@@ -19,7 +19,10 @@ namespace RepositoryLayer
         {
             base.OnModelCreating(modelBuilder);
             SeedRoles(modelBuilder);
-           
+            modelBuilder.Entity<RateAndReview>()
+                .HasOne<recipe>()
+                .WithMany()
+                .HasForeignKey(r => r.RecipeId);
            
         }
         private void SeedRoles(ModelBuilder builder)
@@ -31,6 +34,7 @@ namespace RepositoryLayer
         }
         public DbSet<recipe> recipes { get; set; }
         public DbSet<IngredientsList> ingredients { get; set; }
+        public DbSet<RateAndReview> reviews { get; set; }
         public DbSet<User> users { get; set; }
 
     }

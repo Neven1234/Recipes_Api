@@ -15,6 +15,7 @@ namespace Recipes.API.Controllers
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IWebHostEnvironment _environment;
         private readonly RecipeDbContext _dbContext;
+       // private readonly IRateAndReview _IrateAndReview;
 
         public RecipeController(IRecipe Irecipe, IHostingEnvironment hostingEnvironment, IWebHostEnvironment environment, RecipeDbContext dbContext)
         {
@@ -22,6 +23,7 @@ namespace Recipes.API.Controllers
             this._hostingEnvironment = hostingEnvironment;
             this._environment = environment;
             this._dbContext = dbContext;
+            //this._IrateAndReview = rateAndReview;
         }
 
         //get all recipes
@@ -78,7 +80,20 @@ namespace Recipes.API.Controllers
             return Ok(res);
         }
 
+        //Rate And Review
 
+        //[HttpGet("Rate and review")]
+        //public IActionResult getReview(int id)
+        //{
+        //    var res = this._IrateAndReview.Get(id);
+        //    return Ok(res);
+        //}
+        //[HttpPost("Rating/{recipeId:int}/{userName}")]
+        //public async Task< IActionResult> AddReview(RateAndReview rateAndReview,int recipeId,string userName)
+        //{
+        //    var res= await _IrateAndReview.Add(rateAndReview,recipeId,userName);
+        //    return Ok(res);
+        //}
         //upload image
 
         [HttpPost("ImageUpload"), DisableRequestSizeLimit]

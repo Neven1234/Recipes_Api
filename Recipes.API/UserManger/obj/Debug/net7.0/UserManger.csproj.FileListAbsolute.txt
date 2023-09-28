@@ -1,0 +1,12 @@
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\bin\Debug\net7.0\UserManger.deps.json
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\bin\Debug\net7.0\UserManger.dll
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\bin\Debug\net7.0\UserManger.pdb
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\obj\Debug\net7.0\UserManger.csproj.AssemblyReference.cache
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\obj\Debug\net7.0\UserManger.GeneratedMSBuildEditorConfig.editorconfig
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\obj\Debug\net7.0\UserManger.AssemblyInfoInputs.cache
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\obj\Debug\net7.0\UserManger.AssemblyInfo.cs
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\obj\Debug\net7.0\UserManger.csproj.CoreCompileInputs.cache
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\obj\Debug\net7.0\UserManger.dll
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\obj\Debug\net7.0\refint\UserManger.dll
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\obj\Debug\net7.0\UserManger.pdb
+E:\Task 2\Recipes_Api\Recipes.API\UserManger\obj\Debug\net7.0\ref\UserManger.dll
