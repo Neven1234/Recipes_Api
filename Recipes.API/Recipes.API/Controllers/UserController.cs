@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RepositoryLayer.Migrations;
 using ServiceLayer.Services.Contract;
 using UserManger.Models;
 using UserManger.Service;
@@ -27,7 +28,7 @@ namespace Recipes.API.Controllers
         [HttpPost("Regist")]
         public async Task< IActionResult> regist(User user)
         {
-            var res = await _iuser.Regist(user);
+            var res = await _iuser.Register(user);
             return Ok(res);
         }
         [HttpPost("LogIn")]
@@ -49,6 +50,77 @@ namespace Recipes.API.Controllers
 
             this._iemail.SendEmail(message);
             return Ok("send succ");
+        }
+        [HttpGet("reset-password")]
+        public async Task<IActionResult> resetPassword(string token, string email)
+        {
+            var newPass = new ResetPassword { Token = token, Email = email };
+            return Ok(newPass);
+        }
+        [HttpPost("ForgetPassword")]
+        public async Task<IActionResult>forgetPassword(string username)
+        {
+            try
+            {
+                var user = await _userManager.FindByNameAsync(username);
+                if (user != null)
+                {
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                    var link = "https://localhost:7206/api/User/reset-password?token=" + token + "&email=" + user.Email;
+                    var message = new Message(new string[] { user.Email! }, "confirmation email link", link);
+                    _iemail.SendEmail(message);
+                    return Ok("reset password link sent");
+                }
+                else
+                {
+                    return Ok( "user not found");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return Ok( ex.Message);
+            }
+        }
+
+        ///
+        [HttpGet("Confirmation")]
+       
+        public async Task<IActionResult> Confirmation(string token,string email)
+        {
+           token= token.Replace(' ', '+');
+            var user=await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                var result = await _userManager.ConfirmEmailAsync(user, token);
+                if (result.Succeeded)
+                {
+                    
+                    return Ok("Confirmation linke sent");
+                }
+            }
+            return Ok("error");
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPassword resetPassword)
+        {
+            var user = await _userManager.FindByEmailAsync(resetPassword.Email);
+            if (user != null)
+            {
+                var resetPass = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Passwored);
+                if (resetPass.Succeeded)
+                {
+                    foreach (var error in resetPass.Errors)
+                    {
+                        ModelState.AddModelError(error.Code, error.Description);
+                    }
+                    return Ok(ModelState);
+                }
+                return Ok("Password has been changeed");
+            }
+            return Ok("Couldnt send mail to the email");
         }
 
     }

@@ -14,6 +14,10 @@ namespace ServiceLayer.Services.Contract
        Task< string> LogIn(User user);
 
         //regist
-        Task<string> Regist(User user);
+        Task<string> Register(User user);
+
+        //reset password
+        public Task< string> ForgertPassword(string userName);
+        
     }
 }

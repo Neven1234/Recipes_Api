@@ -39,6 +39,8 @@ builder.Services.Configure<FormOptions>(o =>
     o.MultipartBodyLengthLimit = int.MaxValue;
     o.MemoryBufferThreshold = int.MaxValue;
 });
+builder.Services.Configure<DataProtectionTokenProviderOptions>(option =>
+    option.TokenLifespan = TimeSpan.FromHours(10));
 //configuration email
 var emailConfig = configuration
     .GetSection("EmailConfiguration")
