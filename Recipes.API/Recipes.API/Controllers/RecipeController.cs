@@ -80,20 +80,15 @@ namespace Recipes.API.Controllers
             return Ok(res);
         }
 
-        //Rate And Review
+        //get user reipes
+        [HttpGet("userRecipes/{username}")]
+        public async Task< IActionResult> userReipes(string username)
+        {
+            var res=await _irecipe.RecipesOfUser(username);
+            return Ok(res);
+        }
 
-        //[HttpGet("Rate and review")]
-        //public IActionResult getReview(int id)
-        //{
-        //    var res = this._IrateAndReview.Get(id);
-        //    return Ok(res);
-        //}
-        //[HttpPost("Rating/{recipeId:int}/{userName}")]
-        //public async Task< IActionResult> AddReview(RateAndReview rateAndReview,int recipeId,string userName)
-        //{
-        //    var res= await _IrateAndReview.Add(rateAndReview,recipeId,userName);
-        //    return Ok(res);
-        //}
+
         //upload image
 
         [HttpPost("ImageUpload"), DisableRequestSizeLimit]

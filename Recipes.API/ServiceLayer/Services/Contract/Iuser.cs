@@ -11,13 +11,30 @@ namespace ServiceLayer.Services.Contract
     {
         //log in
         
-       Task< string> LogIn(User user);
+        Task< string> LogIn(User user);
 
         //regist
         Task<string> Register(User user);
 
+        //Get user
+
+        Task< User> GetUser(string username);
+        
+        //get userId
+        Task< string> UserId(string user);
+
+        //Update user
+        Task< string> UpdateUser(User user, string username);
+        Task< string> ChangePassword( ChangePassword changePassword,string user);
+
         //reset password
         public Task< string> ForgertPassword(string userName);
-        
+        public Task<string> resetPassword(string token, string email);
+        public Task<string> ResetPassword(ResetPassword resetPassword,string username);
+
+        //confirmation
+        public Task<string> Confirmation(string token, string email);
+
+
     }
 }

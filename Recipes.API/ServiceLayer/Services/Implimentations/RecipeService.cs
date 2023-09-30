@@ -38,18 +38,21 @@ namespace ServiceLayer.Services.Implimentations
         //add new recipy
         public async Task< string> AddRecipe(recipe recipe, string username)
         {
+           
             _cache.Remove(cacheKey);
             var user = await _userManager.FindByNameAsync(username);
-            recipe.UserName = user.UserName;
+            recipe.UserName = user.Id;
             return await _repository.Add(recipe );
         }
 
+        //edite
         public string EditeRecipe(int id, recipe recipe)
         {
             _cache.Remove(cacheKey);
             return this._repository.Edite(id, recipe);
         }
 
+        //filter
         public IEnumerable<recipe> Filter(string NameOrIngreadiant)
         {
             NameOrIngreadiant = string.IsNullOrEmpty(NameOrIngreadiant) ? "" : NameOrIngreadiant.ToLower();
@@ -85,7 +88,7 @@ namespace ServiceLayer.Services.Implimentations
         }
 
         
-
+        //get single recipe
         public recipe GetRecipe(int id)
         {
             var stopWathc = new Stopwatch();
@@ -109,6 +112,7 @@ namespace ServiceLayer.Services.Implimentations
             
         }
 
+        //get all recipes
         public IEnumerable<recipe> GetRecipes()
         {
             var stopWathc = new Stopwatch();
@@ -131,14 +135,35 @@ namespace ServiceLayer.Services.Implimentations
 
         }
 
+        //delete recipe
         public string RemoveRecipe(int id)
         {
             _cache.Remove(cacheKey);
             return this._repository.Remove(id);
         }
 
+        //get user recipes
+        public async Task<IEnumerable<recipe>> RecipesOfUser(string username)
+        {
+            var user= await _userManager.FindByNameAsync(username);
+            var recipes = from R in _dbContext.recipes
+                          where username == "" ||
+                          R.UserName == user.Id
+                          select new recipe
+                          {
+                              Id = R.Id,
+                              Name = R.Name,
+                              Ingredients = R.Ingredients,
+                              Steps = R.Steps,
+                              Image = R.Image,
+                          }
 
-       
+                          ;
+            return (IEnumerable<recipe>)recipes.ToList();
+        }
+
+
+
 
         //testing
 

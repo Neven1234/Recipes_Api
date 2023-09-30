@@ -35,32 +35,104 @@ namespace ServiceLayer.Services.Implimentations
            this._iemail = email;
         }
 
-        //reset password
+        public async Task<string> ChangePassword(ChangePassword changePassword, string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            if (user != null)
+            {
+                var IsPasswordCorrect = await _userManager.CheckPasswordAsync(user, changePassword.OldPasswored);
+                if(IsPasswordCorrect )
+                {
+                    if (changePassword.NewPasswored == changePassword.ConfirmPasswored)
+                    {
+                        var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                        var resetPass = await _userManager.ResetPasswordAsync(user, token, changePassword.NewPasswored);
+                        if (resetPass.Succeeded)
+                        {
+                            return ("Password has been changeed");
+                        }
+                        return (resetPass.Errors.ToList().ToString());
+                    }
+                    else
+                    {
+                        return " the password don match the confirm password ";
+                    }
+                }
+                else
+                {
+                    return "current passwored is wrong";
+                }
+            }
+            else
+            {
+                return "user dosen't exist";
+            }
+        }
+
+        //confirmation
+        public async Task<string> Confirmation(string token, string email)
+        {
+            token = token.Replace(' ', '+');
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                var result = await _userManager.ConfirmEmailAsync(user, token);
+                if (result.Succeeded)
+                {
+
+                    return ("Confirmation linke sent");
+                }
+            }
+            return ("error");
+        }
+
+        //Forget password
         public async Task<string> ForgertPassword(string userName)
         {
             try
             {
                 var user = await _userManager.FindByNameAsync(userName);
-                if(user != null)
+                if (user != null)
                 {
-                    var token=await _userManager.GeneratePasswordResetTokenAsync(user);
-                    
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
                     var link = "https://localhost:7206/api/User/reset-password?token=" + token + "&email=" + user.Email;
                     var message = new Message(new string[] { user.Email! }, "confirmation email link", link);
                     _iemail.SendEmail(message);
-                    return "reset password link sent";
+                    return ("reset password link sent");
                 }
                 else
                 {
-                    return "user not found";
+                    return ("user not found");
                 }
             }
-            
+
             catch (Exception ex)
             {
-                return ex.Message;
+                return (ex.Message);
             }
         }
+
+
+        //get user
+        public async Task<User> GetUser(string username)
+        {
+            var userTemp=new User();
+            var user=await _userManager.FindByNameAsync(username);
+            if(user != null)
+            {
+                userTemp.UserName = user.UserName;
+                userTemp.Email = user.Email;
+                return userTemp;
+            }
+            else
+            {
+                return userTemp;
+            }
+        }
+
+
+
 
         //login
         public async Task<string> LogIn(User user)
@@ -71,20 +143,28 @@ namespace ServiceLayer.Services.Implimentations
 
                 if (userExist != null && await _userManager.CheckPasswordAsync(userExist, user.Password))
                 {
-                    var authClaims = new List<Claim>
+                    if(userExist.EmailConfirmed)
                     {
-                        new Claim(ClaimTypes.Name,user.UserName),
-                        new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString())
-                    };
-                    var Roles = await _userManager.GetRolesAsync(userExist);
-                    foreach (var role in Roles)
-                    {
-                        authClaims.Add(new Claim(ClaimTypes.Role, role));
+                        var authClaims = new List<Claim>
+                        {
+                            new Claim(ClaimTypes.Name,user.UserName),
+                            new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString())
+                        };
+                        var Roles = await _userManager.GetRolesAsync(userExist);
+                        foreach (var role in Roles)
+                        {
+                            authClaims.Add(new Claim(ClaimTypes.Role, role));
+                        }
+                        var jwtToken = getToken(authClaims);
+                        var token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
+                        var expiration = DateTime.Now.AddDays(3);
+                        return token + " " + expiration;
                     }
-                    var jwtToken = getToken(authClaims);
-                    var token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
-                    var expiration = DateTime.Now.AddDays(3);
-                    return token + " " + expiration;
+                    else
+                    {
+                        return "Please conferm your email";
+                    }
+                   
                 }
                 else
                 {
@@ -142,7 +222,60 @@ namespace ServiceLayer.Services.Implimentations
 
         }
 
-       
+
+        //reset password token
+        public async Task<string> resetPassword(string token, string email)
+        {
+            token = token.Replace(' ', '+');
+            var newPass = new ResetPassword { Token = token, Email = email };
+            return "please cope the next text : \r\n"+token;
+        }
+
+        public async Task<string> ResetPassword(ResetPassword resetPassword,string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            if (user != null)
+            {
+                resetPassword.Email = user.Email;
+                var resetPass = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Passwored);
+                if (resetPass.Succeeded)
+                {
+                    return ("Password has been changeed");
+                }
+                return resetPass.Errors.ToString();
+            }
+            return ("Couldnt send mail to the email");
+        }
+
+        //Update user
+        public async Task<string> UpdateUser(User user,string username)
+        {
+            var userr= await _userManager.FindByNameAsync(username);
+           
+            if (userr!=null)
+            {
+                userr.UserName= user.UserName;
+                userr.Email= user.Email;                
+                await _userManager.UpdateAsync(userr);
+                return "user Updated succsessfully";
+            }
+            else
+            {
+                return "user doesn't exist";
+            }
+        }
+
+        //get user id
+        public async Task<string> UserId(string username)
+        {
+            var user=await _userManager.FindByNameAsync(username);
+            if(user!=null)
+            {
+                var ID = user.Id;
+                return ID;
+            }
+            return "user not found";
+        }
 
 
         //helper functions

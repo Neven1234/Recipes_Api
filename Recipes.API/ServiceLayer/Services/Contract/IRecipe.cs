@@ -31,5 +31,8 @@ namespace ServiceLayer.Services.Contract
 
         //search by ingredients
         IEnumerable<recipe> FilterIngredients(string ingredients);
+
+        //get recipe of user
+       Task< IEnumerable<recipe>> RecipesOfUser(string UserId);
     }
 }
