@@ -27,6 +27,8 @@ namespace ServiceLayer.Services.Implimentations
         public async Task<string> Add(RateAndReview rateAndReview, int recipeId)
         { 
             rateAndReview.RecipeId = recipeId;
+            //var user = await _userManager.FindByNameAsync(rateAndReview.UserId);
+           // rateAndReview.UserId =  user.Id;
             return await _Irepository.Add(rateAndReview);
         }
 
@@ -37,20 +39,9 @@ namespace ServiceLayer.Services.Implimentations
 
         public List<RateAndReview> GetRateOfRecipe(int RecipeId)
         {
-            List<RateAndReview> reviews = new List<RateAndReview>();
-            var ReviewsRes = from R in _dbContext.reviews
-                             where RecipeId == null ||
-                          R.RecipeId.Equals(RecipeId)
-                             select new RateAndReview
-                             {
-                                 Id = R.Id,
-                                 Rate = R.Rate,
-                                 Review = R.Review,
-                                 RecipeId = R.RecipeId,
-                                 UserId = R.UserId
-
-                             };
-            return ReviewsRes.ToList();
+            var res=this._Irepository.GetAll(x=>x.RecipeId== RecipeId);
+           
+            return res.ToList();
         }
     }
 }

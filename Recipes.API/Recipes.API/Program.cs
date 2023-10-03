@@ -24,13 +24,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<RecipeDbContext>(option=>option.UseSqlServer(builder.Configuration.GetConnectionString("ConnString")));
+builder.Services.AddDbContext<RecipeDbContext>(option=>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("ConnString"));
+    option.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+    });
 
 builder.Services.AddScoped<IRecipe, RecipeService>();
 builder.Services.AddScoped<IIngredients, IngredientsService>();
-builder.Services.AddTransient(typeof(IRepository<>),typeof(RepositoryImplementation<>));
+builder.Services.AddScoped(typeof(IRepository<>),typeof(RepositoryImplementation<>));
 builder.Services.AddScoped<Iuser, userServices>();
 builder.Services.AddScoped<IRateAndReview, RateAndReviewService>();
+builder.Services.AddScoped<ICategory,CategoryServicecs>();
+builder.Services.AddScoped<IFavorite, FavoriteService>();
 
 
 builder.Services.Configure<FormOptions>(o =>

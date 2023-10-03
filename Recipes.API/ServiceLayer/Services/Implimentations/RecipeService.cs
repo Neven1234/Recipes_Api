@@ -25,7 +25,6 @@ namespace ServiceLayer.Services.Implimentations
         public string imgname;
         private readonly IMemoryCache _cache;
         private readonly string cacheKey = "Recipes";
-        private string ViewedRecipeId = "";
 
         public RecipeService(RecipeDbContext dbContext , IRepository<recipe> repository , UserManager<IdentityUser> userManager, IMemoryCache cache)
         {
@@ -55,60 +54,32 @@ namespace ServiceLayer.Services.Implimentations
         //filter
         public IEnumerable<recipe> Filter(string NameOrIngreadiant)
         {
-            NameOrIngreadiant = string.IsNullOrEmpty(NameOrIngreadiant) ? "" : NameOrIngreadiant.ToLower();
-            List<recipe> filters = new List<recipe>();
-            var recipes = from R in _dbContext.recipes
-                          where NameOrIngreadiant == "" ||
-                          R.Name.ToLower().Contains(NameOrIngreadiant)
-                          select new recipe
-                          {
-                              Id = R.Id,
-                              Name = R.Name,
-                              Ingredients = R.Ingredients,
-                              Steps = R.Steps,
-                              Image = R.Image,
-                          }
 
-                           ;
-            return (IEnumerable<recipe>)recipes.ToList();
+            var res= this._repository.GetAll(r=>r.Name.ToLower().Contains(NameOrIngreadiant.ToLower()));
+            
+            return (IEnumerable<recipe>)res.ToList();
         }
 
         public IEnumerable<recipe> FilterIngredients(string ingredients)
         {
+
             ingredients = string.IsNullOrEmpty(ingredients) ? "" : ingredients.ToLower();
-            var Lista = ingredients.Split(",");
+            var ListOfIngredient = ingredients.Split(",");
             List<recipe> filters = new List<recipe>();
-            var recipes = from R in _dbContext.recipes select R;
-            foreach (var Ingr in Lista)
+            foreach (var ingredient in ListOfIngredient)
             {
-                recipes = recipes.Where(X => X.Ingredients.ToLower().Contains(Ingr.ToLower()));
+                filters = (List<recipe>)this._repository.GetAll(r => r.Ingredients.ToLower().Contains(ingredient.ToLower()));
             }
 
-            return recipes.ToList();
+            return filters.ToList();
         }
 
         
         //get single recipe
         public recipe GetRecipe(int id)
         {
-            var stopWathc = new Stopwatch();
-            stopWathc.Start();
-            this.ViewedRecipeId = id.ToString();
-            if (_cache.TryGetValue(ViewedRecipeId, out recipe recipe))
-            {
-                return recipe;
-            }
-            else
-            {
-                recipe = this._repository.GetById(id);
-                _cache.Set(ViewedRecipeId, recipe);
-                var cachEnterOption = new MemoryCacheEntryOptions()
-                    .SetSlidingExpiration(TimeSpan.FromSeconds(45))
-                    .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600))
-                    .SetPriority(CacheItemPriority.Normal);
-                stopWathc.Stop();
-                return recipe;
-            }
+            var res = this._repository.GetById(id);
+                return res;
             
         }
 
@@ -145,22 +116,16 @@ namespace ServiceLayer.Services.Implimentations
         //get user recipes
         public async Task<IEnumerable<recipe>> RecipesOfUser(string username)
         {
-            var user= await _userManager.FindByNameAsync(username);
-            var recipes = from R in _dbContext.recipes
-                          where username == "" ||
-                          R.UserName == user.Id
-                          select new recipe
-                          {
-                              Id = R.Id,
-                              Name = R.Name,
-                              Ingredients = R.Ingredients,
-                              Steps = R.Steps,
-                              Image = R.Image,
-                          }
 
-                          ;
-            return (IEnumerable<recipe>)recipes.ToList();
+            var user= await _userManager.FindByNameAsync(username);
+            var res=this._repository.GetAll(R=>R.UserName==user.Id);
+           
+            return (IEnumerable<recipe>)res.ToList();
         }
+
+        //get users favorites
+
+       
 
 
 

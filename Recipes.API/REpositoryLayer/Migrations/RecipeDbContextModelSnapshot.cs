@@ -22,6 +22,43 @@ namespace RepositoryLayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DomainLayer.Models.CategoryList", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("categories", (string)null);
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.Favorites", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("favorites", (string)null);
+                });
+
             modelBuilder.Entity("DomainLayer.Models.IngredientsList", b =>
                 {
                     b.Property<int>("Id")
@@ -36,7 +73,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ingredients");
+                    b.ToTable("ingredients", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RateAndReview", b =>
@@ -65,7 +102,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("reviews");
+                    b.ToTable("reviews", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.User", b =>
@@ -90,7 +127,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("users");
+                    b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.recipe", b =>
@@ -100,6 +137,10 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -122,7 +163,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("recipes");
+                    b.ToTable("recipes", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -154,7 +195,7 @@ namespace RepositoryLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "31a242a2-8b3a-4651-86f8-c8e804ec9a6a",
+                            Id = "02b15caa-611b-4301-90a7-b85c316f5485",
                             ConcurrencyStamp = "1",
                             Name = "User",
                             NormalizedName = "User"

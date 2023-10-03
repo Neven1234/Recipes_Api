@@ -49,13 +49,13 @@ namespace ServiceLayer.Services.Implimentations
                         var resetPass = await _userManager.ResetPasswordAsync(user, token, changePassword.NewPasswored);
                         if (resetPass.Succeeded)
                         {
-                            return ("Password has been changeed");
+                            return ("Password changeed successfully");
                         }
                         return (resetPass.Errors.ToList().ToString());
                     }
                     else
                     {
-                        return " the password don match the confirm password ";
+                        return " New password and confirm password do not match ";
                     }
                 }
                 else
@@ -80,7 +80,7 @@ namespace ServiceLayer.Services.Implimentations
                 if (result.Succeeded)
                 {
 
-                    return ("Confirmation linke sent");
+                    return ("User Confirmed");
                 }
             }
             return ("error");
@@ -97,7 +97,7 @@ namespace ServiceLayer.Services.Implimentations
                     var token = await _userManager.GeneratePasswordResetTokenAsync(user);
 
                     var link = "https://localhost:7206/api/User/reset-password?token=" + token + "&email=" + user.Email;
-                    var message = new Message(new string[] { user.Email! }, "confirmation email link", link);
+                    var message = new Message(new string[] { user.Email! }, "Reset Passwored ", link);
                     _iemail.SendEmail(message);
                     return ("reset password link sent");
                 }
@@ -162,7 +162,7 @@ namespace ServiceLayer.Services.Implimentations
                     }
                     else
                     {
-                        return "Please conferm your email";
+                        return "Please conferm your email by click the linke we sent it to you";
                     }
                    
                 }
@@ -187,7 +187,7 @@ namespace ServiceLayer.Services.Implimentations
                 var userEx2 = await _userManager.FindByEmailAsync(user.Email);
                 if (userEx != null || userEx2!=null)
                 {
-                    return ("User exist");
+                    return ("Username or email is already exist");
                 }
                 else
                 {
@@ -204,13 +204,13 @@ namespace ServiceLayer.Services.Implimentations
                         var token = await _userManager.GenerateEmailConfirmationTokenAsync(userr);
                         
                         var confirmationLink= "https://localhost:7206/api/User/Confirmation?token=" +token+"&email="+userr.Email;
-                        var message = new Message(new string[] { userr.Email! }, "confirmation email link", confirmationLink);
+                        var message = new Message(new string[] { userr.Email! }, "confirmation email link", "if you wnt to confirm your email in recipes websit please click the link \r\n"+confirmationLink);
                         _iemail.SendEmail(message);
                         return ("We send you a confirmation mail please confirm it");
                     }
                     else
                     {
-                        return ("error");
+                        return (res.Errors.ToString());
                     }
                 }
             }
@@ -228,7 +228,7 @@ namespace ServiceLayer.Services.Implimentations
         {
             token = token.Replace(' ', '+');
             var newPass = new ResetPassword { Token = token, Email = email };
-            return "please cope the next text : \r\n"+token;
+            return "please copy the next text : \r\n"+token;
         }
 
         public async Task<string> ResetPassword(ResetPassword resetPassword,string username)
@@ -237,14 +237,22 @@ namespace ServiceLayer.Services.Implimentations
             if (user != null)
             {
                 resetPassword.Email = user.Email;
-                var resetPass = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Passwored);
-                if (resetPass.Succeeded)
+                if(resetPassword.ConfirmPasswored==resetPassword.Passwored)
                 {
-                    return ("Password has been changeed");
+                    var resetPass = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Passwored);
+                    if (resetPass.Succeeded)
+                    {
+                        return ("Password has been changeed");
+                    }
+                    return resetPass.Errors.ToString();
                 }
-                return resetPass.Errors.ToString();
+                else
+                {
+                    return "New password and confirm password do not match ";
+                }
+                
             }
-            return ("Couldnt send mail to the email");
+            return ("Couldnt send  email");
         }
 
         //Update user

@@ -35,6 +35,8 @@ namespace RepositoryLayer
         public DbSet<recipe> recipes { get; set; }
         public DbSet<IngredientsList> ingredients { get; set; }
         public DbSet<RateAndReview> reviews { get; set; }
+        public DbSet<CategoryList> categories { get; set; }
+       public DbSet<Favorites> favorites { get; set; }
         public DbSet<User> users { get; set; }
 
     }

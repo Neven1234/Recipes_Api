@@ -9,10 +9,12 @@ namespace Recipes.API.Controllers
     public class IngredientsController : Controller
     {
         private readonly IIngredients _ingredients;
+        private readonly ICategory _icategory;
 
-        public IngredientsController(IIngredients ingredients)
+        public IngredientsController(IIngredients ingredients,ICategory category)
         {
             this._ingredients = ingredients;
+            this._icategory = category;
         }
         [HttpGet]
         public IActionResult GetIngredients()
@@ -28,5 +30,19 @@ namespace Recipes.API.Controllers
 
         }
 
+        //category
+        [HttpGet("Category")]
+        public IActionResult GetAllCategory()
+        {
+            var res=this._icategory.GetCategories();
+            return Ok(res);
+        }
+
+        [HttpPost("Category")]
+        public IActionResult AddCategory(CategoryList category)
+        {
+            var res= this._icategory.AddCategory(category);
+            return Ok(res);
+        }
     }
 }

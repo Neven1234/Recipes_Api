@@ -26,8 +26,11 @@ namespace DomainLayer.Models
 
         [ForeignKey("UserID")]
         public string UserName { get; set; }
+
+        [Required]
+        public string Category { get; set; }
         //navigation
-       
+        
 
     }
 }

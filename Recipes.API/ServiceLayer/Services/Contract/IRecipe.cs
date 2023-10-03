@@ -34,5 +34,7 @@ namespace ServiceLayer.Services.Contract
 
         //get recipe of user
        Task< IEnumerable<recipe>> RecipesOfUser(string UserId);
+
+        
     }
 }

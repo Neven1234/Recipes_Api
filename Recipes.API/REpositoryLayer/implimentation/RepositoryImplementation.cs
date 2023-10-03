@@ -6,6 +6,7 @@ using RepositoryLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,9 +60,10 @@ namespace RepositoryLayer.implimentation
         }
 
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter)
         {
-            return entity.AsEnumerable();
+            var data = filter == null ? entity.ToList() : entity.Where(filter).ToList();
+            return data;
         }
 
         public T GetById(int id)
