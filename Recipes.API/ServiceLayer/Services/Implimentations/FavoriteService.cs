@@ -30,6 +30,7 @@ namespace ServiceLayer.Services.Implimentations
             var user = await _userManager.FindByNameAsync(userId);
             favorites.UserId = user.Id;
             this._Irepository.Add(favorites);
+            
             return favorites;
             
            
