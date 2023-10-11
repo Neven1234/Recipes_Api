@@ -18,7 +18,7 @@ namespace ServiceLayer.Services.Contract
 
         //Get user
 
-        Task< User> GetUser(string username);
+        Task< User> GetUser( string userId);
         
         //get userId
         Task< string> UserId(string user);

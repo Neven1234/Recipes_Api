@@ -37,7 +37,10 @@ builder.Services.AddScoped<Iuser, userServices>();
 builder.Services.AddScoped<IRateAndReview, RateAndReviewService>();
 builder.Services.AddScoped<ICategory,CategoryServicecs>();
 builder.Services.AddScoped<IFavorite, FavoriteService>();
-
+builder.Services.AddScoped<IPlanner, PlannerService>();
+builder.Services.AddScoped<IShoppingList,ShoppingListService>();
+builder.Services.AddScoped<IFollow,FollowerService>();
+builder.Services.AddScoped<IComment, CommentService>();
 
 builder.Services.Configure<FormOptions>(o =>
 {

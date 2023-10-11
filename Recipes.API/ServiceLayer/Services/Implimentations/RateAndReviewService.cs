@@ -27,7 +27,8 @@ namespace ServiceLayer.Services.Implimentations
         public async Task<string> Add(RateAndReview rateAndReview, int recipeId)
         { 
             rateAndReview.RecipeId = recipeId;
-            //var user = await _userManager.FindByNameAsync(rateAndReview.UserId);
+            var user = await _userManager.FindByIdAsync(rateAndReview.UserId);
+            rateAndReview.UserName = user.UserName;
            // rateAndReview.UserId =  user.Id;
             return await _Irepository.Add(rateAndReview);
         }

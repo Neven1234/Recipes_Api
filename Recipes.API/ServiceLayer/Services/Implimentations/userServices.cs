@@ -115,10 +115,10 @@ namespace ServiceLayer.Services.Implimentations
 
 
         //get user
-        public async Task<User> GetUser(string username)
+        public async Task<User> GetUser(string userId)
         {
             var userTemp=new User();
-            var user=await _userManager.FindByNameAsync(username);
+            var user=await _userManager.FindByIdAsync(userId);
             if(user != null)
             {
                 userTemp.UserName = user.UserName;

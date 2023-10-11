@@ -45,10 +45,10 @@ namespace Recipes.API.Controllers
         }
 
         //Get user
-        [HttpGet("GetUser/{username}")]
-        public async Task<IActionResult> GetUser(string username)
+        [HttpGet("GetUser/{userId}")]
+        public async Task<IActionResult> GetUser(string userId)
         {
-            var res=await _iuser.GetUser(username);
+            var res=await _iuser.GetUser(userId);
             return Ok(res);
         }
 

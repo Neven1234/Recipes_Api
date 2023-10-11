@@ -20,8 +20,10 @@ E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\ServiceLayer.dll
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\ServiceLayer.pdb
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\DomainLayer.dll
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\RepositoryLayer.dll
+E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\UserManger.dll
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\DomainLayer.pdb
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\RepositoryLayer.pdb
+E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\UserManger.pdb
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\ServiceLayer.csproj.AssemblyReference.cache
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\ServiceLayer.GeneratedMSBuildEditorConfig.editorconfig
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\ServiceLayer.AssemblyInfoInputs.cache
@@ -32,5 +34,3 @@ E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\ServiceLayer.dll
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\refint\ServiceLayer.dll
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\ServiceLayer.pdb
 E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\obj\Debug\net7.0\ref\ServiceLayer.dll
-E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\UserManger.dll
-E:\Task 2\Recipes_Api\Recipes.API\ServiceLayer\bin\Debug\net7.0\UserManger.pdb
